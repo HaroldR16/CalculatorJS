@@ -1,0 +1,74 @@
+<%- include('elements/head')%>
+<body onload="getElements()">
+    <table class="calculator">
+        <tr>
+            <td colspan="4"><span id="result"></span></td>
+        </tr>
+        <tr>
+          <td><button id="sqr">χ²</button></td>
+          <td><button id="cubic">χ3</button></td>
+          <td><button id="elevateY">χ^Y</button></td>
+          <td><button id="+-">+-</button></td>
+          <td><button id="root">√x</button></td>
+        </tr>
+        <tr>
+            <td><button id="nana">7</button></td>
+            <td><button id="hachi">8</button></td>
+            <td><button id="kyu">9</button></td>
+            <td><button id="div">/</button></td>
+            <td><button id="fact">!</button></td>
+        </tr>
+        <tr>
+            <td><button id="yon">4</button></td>
+            <td><button id="go">5</button></td>
+            <td><button id="roku">6</button></td>
+            <td><button id="mult">*</button></td>
+            <td><button id="add">+</button></td>
+        </tr>
+        <tr>
+            <td><button id="ichi">1</button></td>
+            <td><button id="ni">2</button></td>
+            <td><button id="san">3</button></td>
+            <td><button id="rest">-</button></td>
+            <td><button id="%">%</button></td>
+        </tr>
+        <tr>
+          <td><button id="rei">0</button></td>
+          <td><button id=".">.</button></td>
+          <td><button id="EXP">EXP</button></td>
+          <td><button id="equal">=</button></td>
+          <td><button id="reset">C</button></td>
+        </tr>
+</table>
+
+<style>
+    .calculator{
+      display:block;
+      margin:0 auto;
+      padding:20px;
+      background-color:#2980b9;
+      width:600px;
+      height:550px;
+      border-radius: 25px;
+    }
+    .calculator td button{
+      display:block;
+      width:70px;
+      height: 70px;
+      font-size: 25px;
+    }
+    #result{
+      display:block;
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 50px;
+      width:500px;
+      height: 100px;
+      line-height: 100px;
+      background-color:#fff;
+      border-radius: 25px;
+      overflow-y: scroll;
+    }
+</style>
+<%- include('script')%>
+<%- include('elements/foot')%>

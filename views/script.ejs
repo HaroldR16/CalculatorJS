@@ -1,0 +1,249 @@
+<script>
+    var value1;
+    var value2;
+    var operation;
+
+    function getElements(){
+      //A lot of variables
+      var result = document.getElementById('result');
+      var reset = document.getElementById('reset');
+      var add = document.getElementById('add');
+      var rest = document.getElementById('rest');
+      var mult = document.getElementById('mult');
+      var div = document.getElementById('div');
+      var equal = document.getElementById('equal');
+      var one = document.getElementById('ichi');
+      var two = document.getElementById('ni');
+      var three = document.getElementById('san');
+      var four = document.getElementById('yon');
+      var five = document.getElementById('go');
+      var six = document.getElementById('roku');
+      var seven = document.getElementById('nana');
+      var eight = document.getElementById('hachi');
+      var nine = document.getElementById('kyu');
+      var zero = document.getElementById('rei');
+      var point = document.getElementById('.');
+      var EXP = document.getElementById('EXP');
+      var fact = document.getElementById('fact');
+      var porcentage = document.getElementById('%');
+      var sqr = document.getElementById('sqr');
+      var cube = document.getElementById('cubic');
+      var elvate = document.getElementById('elevateY');
+      var plusMinus = document.getElementById('+-');
+      var root = document.getElementById('root');
+    
+    //POST Elements
+    //Numbers and point
+      one.onclick = function(e){
+      result.textContent = result.textContent  + "1";
+      }
+      two.onclick = function(e){
+        result.textContent = result.textContent  + "2";
+      }
+      three.onclick = function(e){
+        result.textContent = result.textContent  + "3";
+      }
+      four.onclick = function(e){
+        result.textContent = result.textContent  + "4";
+      }
+      five.onclick = function(e){
+        result.textContent = result.textContent  + "5";
+      }
+      six.onclick = function(e){
+        result.textContent = result.textContent + "6";
+      }
+      seven.onclick = function(e){
+        result.textContent = result.textContent + "7";
+      }
+      eight.onclick = function(e){
+        result.textContent = result.textContent + "8";
+      }
+      nine.onclick = function(e){
+        result.textContent = result.textContent +"9";
+      }
+      zero.onclick = function(e){
+        result.textContent = result.textContent +"0";
+      }
+      point.onclick = function(e){
+        result.textContent = result.textContent +".";
+      }
+
+      //Operations
+      //Reset
+      reset.onclick = function(e){
+          resete();
+      }
+      //add
+      add.onclick = function(e){
+          value1 = result.textContent;
+          operation = "+";
+          clean();
+      }
+      //substract
+      rest.onclick = function(e){
+          value1 = result.textContent;
+          operation = "-";
+          clean();
+      }
+      //multiplication
+      mult.onclick = function(e){
+          value1 = result.textContent;
+          operation = "*";
+          clean();
+      }
+      //division
+      div.onclick = function(e){
+          value1 = result.textContent;
+          operation = "/";
+          clean();
+      }
+      //equal
+      equal.onclick = function(e){
+          value2 = result.textContent;
+          resolve();
+      }
+      //exponential
+      EXP.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'EXP';
+        resolve();
+      }
+      //factorial
+      fact.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'fact';
+        resolve();
+      }
+      //porcentage
+      porcentage.onclick = function(e){
+        value1 = result.textContent;
+        operation = '%';
+        clean();
+      }
+      //Square
+      sqr.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'sqr';
+        resolve();
+      }
+      //Cube
+      cube.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'cube';
+        resolve();
+      }
+      //Elevate Y
+      elvate.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'elevateY';
+        clean();
+      }
+      //+-
+      plusMinus.onclick = function(e){
+        value1 = result.textContent;
+        operation = '+-'
+        resolve();
+      }
+      //root
+      root.onclick = function(e){
+        value1 = result.textContent;
+        operation = 'root';
+        resolve();
+      }
+  }
+//Cleaning the textContent
+  function clean(){
+    result.textContent="";
+  }
+//Reset variables
+  function resete(){
+    result.textContent="";
+    value1 = 0;
+    value2 = 0;
+    operation ="";
+  }
+//Switch for every case to return a result
+  function resolve(){
+    var res = 0;
+    switch(operation){
+      //adding
+      case "+":
+        res = parseFloat(value1) + parseFloat(value2);
+        break;
+      //substracting
+      case "-":
+        res = parseFloat(value1) - parseFloat(value2);
+        break;
+      //mulpliying
+      case "*":
+        res = parseFloat(value1) * parseFloat(value2);
+        break;
+      //division
+      case "/":
+        res = parseFloat(value1) / parseFloat(value2);
+        break;
+      //exponential
+      case "EXP":
+        res = 10 ** parseFloat(value1);
+        break;
+      //factorial
+      case "fact":
+        res = fact(parseFloat(value1));
+        break;
+      //porcentage
+      //en español xD primero es el porcentaje, luego el valor
+      //es decir "el 25% de 100" funciona asi como se lee
+      case "%":
+        res = (parseFloat(value1) /100) * parseFloat(value2);
+        break;
+      //Square
+      case "sqr":
+        res = parseFloat(value1) ** 2;
+        break;
+      //Cube
+      case "cube":
+        res = parseFloat(value1)**3;
+        break;
+      //ElevateY
+      case "elevateY":
+        res = parseFloat(value1) ** parseFloat(value2);
+        break;
+      //+-
+      //No supe como crear 2 eventos para el boton
+      //para que cuando tenga el - se pase a +
+      //si me puede ayudar? porfas
+      case "+-":
+        if(res == minus() + parseFloat(value1)){
+          res = plus() + parseFloat(value1);
+        }else{
+          res = minus() + parseFloat(value1);
+        }break;
+      //Square root
+      case "root":
+        res = Math.sqrt(parseFloat(value1));
+        break;
+      //default
+      default:
+        res= "No data entered";
+    }
+    resete();
+    result.textContent = res;
+  }
+//Factorial
+  function fact(n){
+        if(n == 0 || n == 1 ){
+          return  1;
+        }else{
+          return  n * fact(n-1);
+        }
+  }
+  function plus()
+  {
+      return ""
+  }
+
+  function minus()
+  {
+      return "-"
+  }
+</script>
